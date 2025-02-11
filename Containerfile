@@ -3,6 +3,7 @@ ARG DETOXIFY_VERSION=0.5.2
 ARG FLASK_VERSION=3.1.0
 ARG PYTHON_VERSION=3.13
 ARG TORCH_VERSION=2.6.0
+ARG BUILDPLATFORM=linux/amd64
 
 FROM --platform=$BUILDPLATFORM python:${PYTHON_VERSION}-slim-${DEBIAN_VERSION}
 
@@ -35,7 +36,13 @@ RUN apt update -y \
 RUN echo "Warming up" \
     && python -c "from detoxify import Detoxify; Detoxify('multilingual').predict('Hello world!')"
 
-COPY --chown=nobody rootfs /
+RUN echo "Warming up" \
+    && python -c "from detoxify import Detoxify; Detoxify('original-small').predict('Hello world!')"
+
+RUN echo "Warming up" \
+    && python -c "from detoxify import Detoxify; Detoxify('original').predict('Hello world!')"
+
+COPY rootfs /
 
 ENTRYPOINT ["/entrypoint.py"]
 
