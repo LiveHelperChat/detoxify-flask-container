@@ -1,4 +1,4 @@
-# Detoxify Rest API docekr image
+# Detoxify Rest API docker image
 
 HTTP API to classify the toxicity of text messages. This was inspired by [detoxify-flask-container](https://github.com/nedix/detoxify-flask-container) with a few changes
 
