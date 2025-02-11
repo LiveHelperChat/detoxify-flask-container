@@ -32,7 +32,7 @@ docker run --rm --name lhc-detoxify \
 Restart on failure
 
 ```shell
-docker run -d --pull always --name lhc-detoxify -p 8081:80 -e DETOXIFY_MODEL="original-small" --restart always remdex/lhc-detoxify:latest
+docker run -d --pull always --name lhc-detoxify -p 8080:80 -e DETOXIFY_MODEL="original-small" --restart always remdex/lhc-detoxify:latest
 ```
 
 ### Build from scratch
