@@ -5,6 +5,7 @@ HTTP API to classify the toxicity of text messages. This was inspired by [detoxi
 * Proper JSON response
 * Three models loaded directly `multilingual` `original-small` `original`
 * Build fixes I encountered
+* Memory leaks I found were fixed
 
 ## Usage
 
@@ -20,12 +21,18 @@ docker run --pull always --rm --name lhc-detoxify \
     remdex/lhc-detoxify:latest
 ```
 
-Runs local image if it exists
+Runs local image if it exists. Useful if you are building custom image
 
 ```shell
 docker run --rm --name lhc-detoxify \
-  -p 8081:80 -e DETOXIFY_MODEL="original-small" \
+  -p 8080:80 -e DETOXIFY_MODEL="original-small" \
   remdex/lhc-detoxify:latest
+```
+
+Restart on failure
+
+```shell
+docker run -d --pull always --name lhc-detoxify -p 8081:80 -e DETOXIFY_MODEL="original-small" --restart always remdex/lhc-detoxify:latest
 ```
 
 ### Build from scratch
