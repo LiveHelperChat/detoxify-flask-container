@@ -49,6 +49,14 @@ The following command sends a HTTP request that classifies the toxicity of a tex
 curl '127.0.0.1:8080?text=foobar'
 ```
 
+## Known issues
+
+There is still a memomry leak whcih I could not trace back and I think it's related to `Detoxify` package itself. It's recomended to restart docker image daily etc.
+
+```shell
+12 12 * * * /usr/bin/docker restart lhc-detoxify /dev/null 2>&1
+```
+
 <hr>
 
 ## Attribution
